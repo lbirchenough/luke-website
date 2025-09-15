@@ -1,0 +1,157 @@
+.navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    width: 60px;
+    background-color: #2a2a2a;
+    padding: 20px 10px;
+    box-sizing: border-box;
+    z-index: 1000;
+    transition: width 0.3s ease;
+    overflow: hidden;
+}
+
+.navbar ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.navbar li {
+    margin: 0px;
+}
+
+/* Desktop: Hover to expand */
+@media (min-width: 1296px) {
+    .navbar:hover {
+        width: 150px;
+    }
+}
+
+/* Tablet: Always collapsed, no hover */
+@media (max-width: 1295px) and (min-width: 640px) {
+    .navbar {
+        transition: none;
+    }
+    
+    .navbar:hover {
+        width: 60px; /* Stay collapsed */
+    }
+
+    /* .arrow {
+        opacity: 0;
+        display: none;
+    } */
+
+    .navbar li:first-child {
+        display: none;
+    }
+
+    /* .navbar li:first-child .navLink:hover {
+        background-color: #2a2a2a;
+    } */
+
+}
+
+/* Mobile: Bottom navbar */
+@media (max-width: 639px) {
+    .navbar {
+        position: fixed;
+        top: auto;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        height: 60px;
+        width: 100%;
+        padding: 10px;
+        transition: none; /* Disable transition on mobile */
+    }
+    
+    .navbar ul {
+        display: flex;
+        flex-direction: row;
+        list-style: none;
+        justify-content: space-evenly;
+        gap: 15px;
+    }
+
+    .navLink {
+        width: 40px;
+    }
+    
+
+    /* Hide the first li (arrow) on mobile */
+    .navbar li:first-child {
+        display: none;
+    }
+    
+    
+}
+
+.navLink {
+    text-decoration: none;
+    color: #60a5fa; /* text-blue-400 equivalent */
+    font-size: 15px;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    padding: 12px 8px;
+    border-radius: 8px;
+    transition: all 0.2s ease;
+    position: relative;
+    overflow: hidden;
+    
+}
+
+.navLink:hover {
+    background-color: #493e3e;
+    color: #93c5fd; /* text-blue-300 equivalent */
+}
+
+
+.text {
+    margin-left: 20px;
+    white-space: nowrap;
+    opacity: 0;
+    transform: translateX(-10px);
+    transition: all 0.3s ease;
+    
+}
+
+/* Desktop only: Show text on hover */
+@media (min-width: 1296px) {
+    .navbar:hover .text {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+/* Tablet and mobile: Always hide text */
+@media (max-width: 1295px) {
+    .text {
+        opacity: 0 !important;
+        transform: translateX(-10px) !important;
+    }
+}
+
+
+.arrow {
+    color: #60a5fa; /* text-blue-400 equivalent */
+    transition: transform 0.3s ease;
+    cursor: pointer;
+}
+
+.navbar:hover .arrow {
+    transform: translateX(85px) rotate(180deg);
+  
+}
+
+
+/* .navbar:hover ul li:first-child .navLink {
+    justify-content: flex-end;
+    flex-direction: row-reverse;
+} */

@@ -1,5 +1,12 @@
 This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
 
+## Features
+
+- **Resume Display**: Fetches resume content from GitHub API and displays it with beautiful styling
+- **PDF Generation**: Download your resume as a PDF with preserved styling using Puppeteer
+- **Responsive Design**: Built with Tailwind CSS for a modern, responsive layout
+- **Markdown Support**: Renders GitHub markdown with custom styling for skills, links, and formatting
+
 ## Getting Started
 
 First, run the development server:
@@ -17,6 +24,22 @@ bun dev
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
 You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
+
+## PDF Generation
+
+The resume page includes a "Download PDF" button that generates a PDF version of your resume with all styling preserved. The PDF generation uses Puppeteer to capture the rendered page.
+
+### Environment Variables (Optional)
+
+Create a `.env.local` file for configuration:
+
+```bash
+# GitHub API Token (optional, for higher rate limits)
+GITHUB_TOKEN=your_github_token_here
+
+# Base URL for PDF generation (set this in production)
+NEXT_PUBLIC_BASE_URL=https://your-domain.com
+```
 
 This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
 
