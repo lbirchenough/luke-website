@@ -51,7 +51,6 @@ export default async function ResumeContent() {
 
   return (
     <div className="fixed inset-0 bg-slate-900 text-white overflow-y-auto">
-      <PDFDownloadButton />
       
       <div className="max-w-6xl mx-auto px-6 py-12 sm:pl-20">
           <ReactMarkdown 
@@ -59,7 +58,12 @@ export default async function ResumeContent() {
             rehypePlugins={[rehypeRaw]}
             components={{
               // Custom styling for different markdown elements
-              h1: ({ children }) => <h1 className="text-4xl font-bold mb-2 text-blue-400 pb-2 border-b border-gray-700">{children}</h1>,
+              h1: ({ children }) => (
+                <div className="mb-2 pb-2 border-b border-gray-700 flex items-center justify-between">
+                  <h1 className="text-4xl font-bold text-blue-400">{children}</h1>
+                  <PDFDownloadButton inline className="ml-4" />
+                </div>
+              ),
               // Custom skills block
               div: ({ children, className }) => {
                 if (className === 'skills') {
@@ -71,8 +75,16 @@ export default async function ResumeContent() {
               h2: ({ children }) => <h2 className="text-2xl font-semibold mb-4 text-blue-400 mt-8 pb-2 border-b border-gray-700">{children}</h2>,
               h3: ({ children }) => <h3 className="text-xl font-medium mb-3 text-blue-300 mt-3">{children}</h3>,
               p: ({ children }) => <p className="mb-4 text-gray-200 leading-relaxed">{children}</p>,
-              ul: ({ children }) => <ul className="mb-4 list-disc list-inside text-gray-200 space-y-1">{children}</ul>,
-              ol: ({ children }) => <ol className="mb-4 list-decimal list-inside text-gray-200 space-y-1">{children}</ol>,
+              ul: ({ children }) => (
+                <ul className="mb-4 list-disc list-outside pl-6 text-gray-200 space-y-1">
+                  {children}
+                </ul>
+              ),
+              ol: ({ children }) => (
+                <ol className="mb-4 list-decimal list-outside pl-6 text-gray-200 space-y-1">
+                  {children}
+                </ol>
+              ),
               li: ({ children }) => <li className="mb-1">{children}</li>,
               strong: ({ children }) => <strong className="font-semibold text-white">{children}</strong>,
               em: ({ children }) => <em className="italic text-gray-300">{children}</em>,

@@ -1,7 +1,7 @@
 
 import Link from "next/link";
 import classes from "./NavBar.module.css";
-import { ChevronsRight, FileText, User, House } from "lucide-react";
+import { ChevronsRight, FileText, User, House, Wrench } from "lucide-react";
 
 
 export default function NavBar() {
@@ -15,12 +15,12 @@ export default function NavBar() {
                 </div>
                 </li>
                 
-            <li>
+            {/* <li>
                 <Link href="/" className={classes.navLink} >
                     <span><House /></span>
                     <span className={classes.text}>HOME</span>
                 </Link>
-            </li>
+            </li> */}
             <li>
                 <Link href="/about" className={`${classes.navLink} font-semibold text-blue-400`}>
                     <span><User /></span>
@@ -31,6 +31,12 @@ export default function NavBar() {
                 <Link href="/resume" className={classes.navLink}>
                     <span><FileText /></span>
                     <span className={classes.text}>RESUME</span>
+                </Link>
+            </li>
+            <li>
+                <Link href="/projects" className={classes.navLink}>
+                    <span><Wrench /></span>
+                    <span className={classes.text}>PROJECTS</span>
                 </Link>
             </li>
         </ul>
