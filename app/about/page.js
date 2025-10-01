@@ -1,3 +1,5 @@
+import Image from 'next/image';
+
 export default function About() {
   return (
     <div className="fixed inset-0 bg-slate-900 text-white overflow-y-auto">
@@ -8,8 +10,14 @@ export default function About() {
 
         <div className="mt-8 grid grid-cols-1 md:grid-cols-[220px,1fr] gap-8 items-start">
           <div className="flex md:block justify-center">
-            <div className="relative h-48 w-48 md:h-56 md:w-56 rounded-full ring-2 ring-blue-700/50 border border-gray-700 overflow-hidden bg-slate-800 flex items-center justify-center text-gray-400">
-              <span className="text-sm">Your photo here</span>
+            <div className="relative h-48 w-48 md:h-56 md:w-56 rounded-full ring-2 ring-blue-700/50 border border-gray-700 overflow-hidden">
+              <Image
+                src="/luke-birchenough.jpg"
+                alt="Luke Birchenough"
+                fill
+                className="object-cover"
+                priority
+              />
             </div>
           </div>
 
