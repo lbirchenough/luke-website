@@ -112,6 +112,12 @@
     color: #93c5fd; /* text-blue-300 equivalent */
 }
 
+/* Active link matches hover visuals for persistent cue */
+.active {
+    background-color: #493e3e;
+    color: #93c5fd;
+}
+
 
 .text {
     margin-left: 20px;
