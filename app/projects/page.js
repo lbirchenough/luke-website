@@ -58,6 +58,32 @@ export default function Projects() {
               </div>
             </div>
           </a>
+      
+      <a
+        href="https://yelpcamp-luke.onrender.com"
+        target="_blank"
+        rel="noopener noreferrer"
+        className="block rounded-lg border border-gray-700 bg-slate-800 hover:border-blue-400 transition-colors"
+      >
+        <div className="p-6">
+          <h2 className="text-2xl font-semibold text-white">Yelpcamp</h2>
+          <p className="mt-1 text-sm text-gray-400">Babies first dynamic website</p>
+          <p className="mt-4 text-gray-200">
+            A full-stack CRUD app where users can create, view, edit, and review campgrounds with image uploads and authentication. Deployed on Render — note there may be a brief cold start delay on the free tier.
+          </p>
+          <div className="mt-5">
+            <h3 className="font-semibold text-blue-300">Tech stack</h3>
+            <ul className="mt-2 list-disc list-inside text-gray-200 space-y-1">
+              <li><span className="font-semibold text-white">Backend:</span> Node.js, Express</li>
+              <li><span className="font-semibold text-white">Templates:</span> EJS</li>
+              <li><span className="font-semibold text-white">Middleware:</span> Joi (validation), Passport (authentication)</li>
+              <li><span className="font-semibold text-white">Database:</span> MongoDB (Atlas)</li>
+              <li><span className="font-semibold text-white">Storage:</span> Cloudinary (images)</li>
+              <li><span className="font-semibold text-white">Hosting:</span> Render</li>
+            </ul>
+          </div>
+        </div>
+      </a>
         </div>
       </div>
     </div>
