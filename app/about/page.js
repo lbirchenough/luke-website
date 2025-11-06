@@ -22,33 +22,24 @@ export default function About() {
           </div>
 
           <div>
-            <h2 className="text-2xl font-semibold mb-4 text-blue-400 pb-2 border-b border-gray-700">Hi, I&apos;m Luke</h2>
-            <p className="mb-4 text-gray-200 leading-relaxed">
-              I’m a software engineer focused on building reliable, user-centric web applications.
-              I enjoy designing clean architectures, optimizing performance, and turning complex
-              requirements into elegant solutions. I’m comfortable across the stack and love
-              collaborating with teams to deliver high-impact features.
+            <p className="mb-6 text-gray-200 leading-relaxed">
+              Hi, I'm Luke, a mechatronics engineer focused on software development. I have several years of experience building camera and laser measurement systems for the rail industry, which has given me a strong foundation in software systems development and hands-on engineering, from hardware integration to end-to-end system testing. I'm now focused on full-stack web development, combining that practical background with modern tools to build reliable, user-friendly applications. Before engineering, I worked in education, which helped me develop strong communication skills and an ability to explain complex ideas clearly.
             </p>
 
-            <h3 className="text-xl font-medium mb-3 text-blue-300 mt-3">What I do</h3>
-            <ul className="mb-4 list-disc list-outside pl-6 text-gray-200 space-y-1">
-              <li>Full‑stack development with modern frameworks and tooling</li>
-              <li>API design, integration, and data modeling</li>
-              <li>UI engineering with attention to accessibility and UX</li>
-              <li>Performance tuning, observability, and developer experience</li>
-            </ul>
-
-            <h3 className="text-xl font-medium mb-3 text-blue-300 mt-3">Highlights</h3>
-            <ul className="mb-4 list-disc list-outside pl-6 text-gray-200 space-y-1">
-              <li>Delivered features end‑to‑end across frontend and backend services</li>
-              <li>Automated workflows and improved reliability with testing and CI/CD</li>
-              <li>Collaborated closely with stakeholders to scope, iterate, and ship</li>
-            </ul>
-
-            <h3 className="text-xl font-medium mb-3 text-blue-300 mt-3">Outside of work</h3>
+            <h2 className="text-2xl font-semibold mb-4 text-blue-400 pb-2 border-b border-gray-700 mt-8">What I do</h2>
             <p className="mb-4 text-gray-200 leading-relaxed">
-              I enjoy learning new technologies, contributing to side projects, and exploring
-              tools that improve both product quality and developer productivity.
+              I work across the stack to design and deliver robust, maintainable software. My current toolkit includes:
+            </p>
+            <ul className="mb-4 list-disc list-outside pl-6 text-gray-200 space-y-2">
+              <li><strong className="text-blue-300">Languages:</strong> JavaScript, TypeScript, PHP, Python, C++</li>
+              <li><strong className="text-blue-300">Frameworks & Libraries:</strong> React, Next.js, Express, Laravel</li>
+              <li><strong className="text-blue-300">Databases:</strong> MongoDB, MySQL, SQLite, PostgreSQL</li>
+              <li><strong className="text-blue-300">Cloud & DevOps:</strong> AWS and other cloud platforms, Docker, CI/CD pipelines</li>
+            </ul>
+
+            <h2 className="text-2xl font-semibold mb-4 text-blue-400 pb-2 border-b border-gray-700 mt-8">Outside of work</h2>
+            <p className="mb-4 text-gray-200 leading-relaxed">
+              I enjoy learning new technologies and working on side projects. I love cooking & food, travelling, watching movies and playing sports.
             </p>
           </div>
         </div>
