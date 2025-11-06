@@ -23,7 +23,7 @@ export default function About() {
 
           <div>
             <p className="mb-6 text-gray-200 leading-relaxed">
-              Hi, I'm Luke, a mechatronics engineer focused on software development. I have several years of experience building camera and laser measurement systems for the rail industry, which has given me a strong foundation in software systems development and hands-on engineering, from hardware integration to end-to-end system testing. I'm now focused on full-stack web development, combining that practical background with modern tools to build reliable, user-friendly applications. Before engineering, I worked in education, which helped me develop strong communication skills and an ability to explain complex ideas clearly.
+              Hi, I&apos;m Luke, a mechatronics engineer focused on software development. I have several years of experience building camera and laser measurement systems for the rail industry, which has given me a strong foundation in software systems development and hands-on engineering, from hardware integration to end-to-end system testing. I&apos;m now focused on full-stack web development, combining that practical background with modern tools to build reliable, user-friendly applications. Before engineering, I worked in education, which helped me develop strong communication skills and an ability to explain complex ideas clearly.
             </p>
 
             <h2 className="text-2xl font-semibold mb-4 text-blue-400 pb-2 border-b border-gray-700 mt-8">What I do</h2>
