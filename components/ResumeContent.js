@@ -73,8 +73,8 @@ export default async function ResumeContent() {
               },
               // h2: ({ children }) => <h2 className="text-2xl font-semibold mb-4 text-blue-400 mt-8 border-b border-gray-700 pb-2">{children}</h2>,
               h2: ({ children }) => <h2 className="text-2xl font-semibold mb-4 text-blue-400 mt-8 pb-2 border-b border-gray-700">{children}</h2>,
-              h3: ({ children }) => <h3 className="text-xl font-medium mb-3 text-blue-300 mt-3">{children}</h3>,
-              p: ({ children }) => <p className="mb-4 text-gray-200 leading-relaxed">{children}</p>,
+              h3: ({ children }) => <h3 className="text-xl font-medium mb-0 text-blue-300 mt-3">{children}</h3>,
+              p: ({ children }) => <p className="mb-4 text-gray-200 leading-relaxed ">{children}</p>,
               ul: ({ children }) => (
                 <ul className="mb-4 list-disc list-outside pl-6 text-gray-200 space-y-1">
                   {children}
@@ -86,7 +86,7 @@ export default async function ResumeContent() {
                 </ol>
               ),
               li: ({ children }) => <li className="mb-1">{children}</li>,
-              strong: ({ children }) => <strong className="font-semibold text-white">{children}</strong>,
+              strong: ({ children }) => <strong className="font-normal text-white">{children}</strong>,
               em: ({ children }) => <em className="italic text-gray-300">{children}</em>,
               code: ({ children }) => <code className="bg-gray-800 text-green-400 px-2 py-1 rounded text-sm font-mono">{children}</code>,
               pre: ({ children }) => <pre className="bg-gray-800 text-green-400 p-4 rounded-lg overflow-x-auto mb-4">{children}</pre>,
