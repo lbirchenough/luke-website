@@ -86,6 +86,23 @@ export default function Projects() {
             isExpanded={expanded["workopia"]}
             onToggle={toggleExpanded}
           />
+
+          <ProjectCard
+            id="eventhub"
+            title="EventHub"
+            subtitle="Event Management Platform"
+            description="A full-stack event management application built with a Go backend using Gin framework and a Svelte SPA frontend built with Vite. Features a RESTful API architecture with minimal CRUD functionality and CORS configuration to securely connect the frontend and backend across different hosting platforms. This was a relatively quick project to learn the basics of Go/Gin and Svelte. Currently using raw SQL (go-sql-driver/mysql) queries without an ORM will look to explore a go based ORM in the future."
+            thumbnail="/project-previews/eventhub_preview.png"
+            thumbnailAlt="EventHub preview"
+            link="https://event-hub-svelte.vercel.app/"
+            linkIsExternal={true}
+            frontend="Svelte SPA, svelte5-router, Vite"
+            backend="Gin/Go"
+            database="MySQL (no ORM)"
+            hosting="Backend: Digital Ocean Droplet through Laravel Forge with some tweaks, Frontend: Vercel"
+            isExpanded={expanded["eventhub"]}
+            onToggle={toggleExpanded}
+          />
         </div>
       </div>
     </div>
