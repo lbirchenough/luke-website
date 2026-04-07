@@ -13,6 +13,7 @@ export default function ProjectCard({
   thumbnailAlt,
   link,
   linkIsExternal = false,
+  detailSlug,
   frontend,
   backend,
   database,
@@ -21,19 +22,11 @@ export default function ProjectCard({
   isExpanded,
   onToggle,
 }) {
-  const LinkComponent = linkIsExternal ? "a" : Link;
-  const linkProps = linkIsExternal
-    ? {
-        href: link,
-        target: "_blank",
-        rel: "noopener noreferrer",
-      }
-    : {
-        href: link,
-      };
-
   return (
-    <div className="rounded-lg border border-gray-700 bg-slate-800 hover:border-blue-400 transition-colors">
+    <div
+      className="rounded-lg border border-gray-700 bg-slate-800 hover:border-blue-400 transition-colors cursor-pointer"
+      onClick={() => onToggle(id)}
+    >
       <div className="p-6">
         <div className="flex items-start gap-4">
           <div className="flex-shrink-0">
@@ -47,21 +40,31 @@ export default function ProjectCard({
           </div>
           <div className="flex-1 flex items-start justify-between">
             <div className="flex-1">
-              <LinkComponent
-                {...linkProps}
-                className="hover:text-blue-400 transition-colors"
-              >
-                <h2 className="text-2xl font-semibold text-white">{title}</h2>
-              </LinkComponent>
+              <h2 className="text-2xl font-semibold text-white">{title}</h2>
               <p className="mt-1 text-sm text-gray-400">{subtitle}</p>
+              {linkIsExternal ? (
+                <a
+                  href={link}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  onClick={(e) => e.stopPropagation()}
+                  className="mt-1 inline-block text-sm text-blue-400 hover:text-blue-300 transition-colors"
+                >
+                  View live app ↗
+                </a>
+              ) : (
+                <Link
+                  href={link}
+                  onClick={(e) => e.stopPropagation()}
+                  className="mt-1 inline-block text-sm text-blue-400 hover:text-blue-300 transition-colors"
+                >
+                  View live app ↗
+                </Link>
+              )}
             </div>
-            <button
-              onClick={() => onToggle(id)}
-              className="ml-4 text-gray-400 hover:text-blue-400 transition-colors"
-              aria-label="Toggle details"
-            >
+            <div className="ml-4 text-gray-400">
               {isExpanded ? <ChevronUp size={24} /> : <ChevronDown size={24} />}
-            </button>
+            </div>
           </div>
         </div>
         {isExpanded && (
@@ -91,10 +94,20 @@ export default function ProjectCard({
               )}
               {additionalTechItems}
             </ul>
+            {detailSlug && (
+              <div className="mt-5">
+                <Link
+                  href={`/projects/${detailSlug}`}
+                  onClick={(e) => e.stopPropagation()}
+                  className="inline-flex items-center gap-1 text-blue-400 hover:text-blue-300 text-sm font-medium transition-colors"
+                >
+                  Read more →
+                </Link>
+              </div>
+            )}
           </div>
         )}
       </div>
     </div>
   );
 }
-
