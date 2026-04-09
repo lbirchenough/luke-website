@@ -38,6 +38,8 @@ Services never call each other directly. Instead they communicate via an async m
 
 The current deployment runs on a single Azure VM (B2als v2). All services are containerised with Docker and orchestrated via Docker Compose. Nginx sits at the edge handling SSL termination via a Cloudflare Origin Certificate and routing traffic to the appropriate container. A GitHub Actions pipeline builds and pushes all images to GHCR on every push to main, then SSHes into the VM to pull the latest images, run any pending EF Core migrations, and restart the stack. A self-hosted message broker (RabbitMQ) handles inter-service events, running as a container alongside the services.
 
+
+
 ### V2 - Azure Native (Planned)
 
 The goal for V2 is to move towards a fully Azure-native infrastructure. This means replacing the self-hosted message broker with Azure Service Bus, moving container orchestration to Azure Container Apps or AKS, and managing all infrastructure as code with Terraform. The intent is to eliminate manual VM management, get proper auto-scaling, and make deployments fully repeatable and environment-agnostic.
@@ -124,5 +126,4 @@ Separating Orders and Inventory into distinct services means each owns its data 
 
 ## Links
 
-
-- [GitHub](https://github.com/lbirchenough/TeacupBoutique)
+- [GitHub - V1 Release Tag](https://github.com/lbirchenough/TeacupBoutique/tree/v1.0.0)
