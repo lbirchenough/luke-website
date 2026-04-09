@@ -14,11 +14,7 @@ export default function ProjectCard({
   link,
   linkIsExternal = false,
   detailSlug,
-  frontend,
-  backend,
-  database,
-  hosting,
-  additionalTechItems,
+  techStack,
   isExpanded,
   onToggle,
 }) {
@@ -72,27 +68,11 @@ export default function ProjectCard({
             <p className="mb-5 text-gray-200">{description}</p>
             <h3 className="font-semibold text-blue-300">Tech stack</h3>
             <ul className="mt-2 list-disc list-inside text-gray-200 space-y-1">
-              {frontend && (
-                <li>
-                  <span className="font-semibold text-white">Frontend:</span> {frontend}
+              {techStack?.map(({ label, value }) => (
+                <li key={label}>
+                  <span className="font-semibold text-white">{label}:</span> {value}
                 </li>
-              )}
-              {backend && (
-                <li>
-                  <span className="font-semibold text-white">Backend:</span> {backend}
-                </li>
-              )}
-              {database && (
-                <li>
-                  <span className="font-semibold text-white">Database:</span> {database}
-                </li>
-              )}
-              {hosting && (
-                <li>
-                  <span className="font-semibold text-white">Hosting:</span> {hosting}
-                </li>
-              )}
-              {additionalTechItems}
+              ))}
             </ul>
             {detailSlug && (
               <div className="mt-5">

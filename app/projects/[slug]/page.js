@@ -89,6 +89,11 @@ export default async function ProjectDetail({ params }) {
               </ol>
             ),
             li: ({ children }) => <li className="mb-1">{children}</li>,
+            blockquote: ({ children }) => (
+              <blockquote className="border-l-4 border-blue-400 pl-4 my-4 text-gray-400 italic">
+                {children}
+              </blockquote>
+            ),
             strong: ({ children }) => (
               <strong className="font-semibold text-white">{children}</strong>
             ),
@@ -114,6 +119,9 @@ export default async function ProjectDetail({ params }) {
               </a>
             ),
             hr: () => <hr className="border-gray-700 my-6" />,
+            img: ({ src, alt }) => (
+              <img src={src} alt={alt} className="max-w-full h-auto rounded-lg border border-gray-700 my-4" />
+            ),
           }}
         >
           {markdown}
