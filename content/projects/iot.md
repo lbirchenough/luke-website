@@ -6,7 +6,7 @@ An ESP8266 D1 Mini microcontroller reads sensor data on a configurable interval 
 
 ## Showcase
 
-[Grafana Public Dashboard](https://lbirchenprojectiot.grafana.net/public-dashboards/1471ef71123f4562ac81b2c83ca5a912?refresh=30s&from=now-24h&to=now&timezone=browser)
+[Grafana Public Dashboard](https://lbirchenprojectiot.grafana.net/public-dashboards/2f08948b839840e48421469b960230a6?refresh=30s&from=now-24h&to=now&timezone=browser)
 
 ## Tech Stack
 
