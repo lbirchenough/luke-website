@@ -1,6 +1,6 @@
 # lbirchen.com
 
-Personal portfolio and resume site built with [Next.js](https://nextjs.org) and [Tailwind CSS](https://tailwindcss.com).
+Personal portfolio and resume site built with [Next.js](https://nextjs.org) and [Tailwind CSS](https://tailwindcss.com). Deployed on [Vercel](https://vercel.com).
 
 ## Features
 
