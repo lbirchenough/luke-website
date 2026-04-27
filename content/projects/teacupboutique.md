@@ -44,6 +44,9 @@ The current deployment runs on a single Azure VM (B2als v2). All services are co
 
 The goal for V2 is to move towards a fully Azure-native infrastructure. This means replacing the self-hosted message broker with Azure Service Bus, moving container orchestration to Azure Container Apps or AKS, and managing all infrastructure as code with Terraform. The intent is to eliminate manual VM management, get proper auto-scaling, and make deployments fully repeatable and environment-agnostic.
 
+
+**Update 27/4/2026** - v2 is now live as a staging environment on Azure. It’s separate from the current production v1 deployment, with its own Static Web App frontend and Container Apps backend. The main customer flow is working end-to-end, and I’m using this environment to validate cost, scaling, and operational behavior before production cutover. See /feature/v2-azure-managed-services branch for latest. Goal will be to fully swap over to v2 deployment by end of week but will not be able find much time until after wednesday.
+
 ## Event Reference 
 
 ### Auth Service
