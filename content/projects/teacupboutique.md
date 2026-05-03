@@ -166,5 +166,4 @@ Separating Orders and Inventory into distinct services means each owns its data 
 
 ## Links
 
-- [GitHub - V1 Release Tag](https://github.com/lbirchenough/TeacupBoutique/tree/v1.0.0)
-- [GitHub - V2 Branch](https://github.com/lbirchenough/TeacupBoutique/tree/feature/v2-azure-managed-services)
+- [GitHub](https://github.com/lbirchenough/TeacupBoutique)
