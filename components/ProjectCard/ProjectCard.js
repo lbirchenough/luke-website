@@ -13,6 +13,7 @@ export default function ProjectCard({
   thumbnailAlt,
   link,
   linkIsExternal = false,
+  linkNote,
   detailSlug,
   techStack,
   isExpanded,
@@ -56,6 +57,9 @@ export default function ProjectCard({
                 >
                   View live app ↗
                 </Link>
+              )}
+              {linkNote && (
+                <p className="mt-1 text-xs text-gray-400">{linkNote}</p>
               )}
             </div>
             <div className="ml-4 text-gray-400">
