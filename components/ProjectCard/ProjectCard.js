@@ -32,12 +32,14 @@ export default function ProjectCard({
               alt={thumbnailAlt}
               width={200}
               height={120}
-              className="rounded-lg border border-gray-700 object-cover"
+              className="rounded-lg border border-gray-700 object-cover h-auto w-28 sm:w-[200px]"
             />
           </div>
-          <div className="flex-1 flex items-start justify-between">
-            <div className="flex-1">
-              <h2 className="text-2xl font-semibold text-white">{title}</h2>
+          <div className="flex-1 min-w-0 flex items-start justify-between">
+            <div className="flex-1 min-w-0">
+              <h2 className="text-xl sm:text-2xl font-semibold text-white break-words">
+                {title}
+              </h2>
               <p className="mt-1 text-sm text-gray-400">{subtitle}</p>
               {linkIsExternal ? (
                 <a
@@ -62,7 +64,7 @@ export default function ProjectCard({
                 <p className="mt-1 text-xs text-gray-400">{linkNote}</p>
               )}
             </div>
-            <div className="ml-4 text-gray-400">
+            <div className="ml-4 flex-shrink-0 text-gray-400">
               {isExpanded ? <ChevronUp size={24} /> : <ChevronDown size={24} />}
             </div>
           </div>
