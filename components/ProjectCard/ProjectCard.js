@@ -25,19 +25,20 @@ export default function ProjectCard({
       onClick={() => onToggle(id)}
     >
       <div className="p-6">
-        <div className="flex items-start gap-4">
+        <div className="flex flex-col sm:flex-row items-stretch sm:items-start gap-4">
           <div className="flex-shrink-0">
             <Image
               src={thumbnail}
               alt={thumbnailAlt}
-              width={200}
-              height={120}
-              className="rounded-lg border border-gray-700 object-cover h-auto w-28 sm:w-[200px]"
+              width={600}
+              height={360}
+              sizes="(max-width: 639px) 100vw, 200px"
+              className="rounded-lg border border-gray-700 object-cover h-auto w-full sm:w-[200px]"
             />
           </div>
           <div className="flex-1 min-w-0 flex items-start justify-between">
             <div className="flex-1 min-w-0">
-              <h2 className="text-xl sm:text-2xl font-semibold text-white break-words">
+              <h2 className="text-2xl font-semibold text-white break-words">
                 {title}
               </h2>
               <p className="mt-1 text-sm text-gray-400">{subtitle}</p>
