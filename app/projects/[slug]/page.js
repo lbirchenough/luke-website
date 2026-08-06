@@ -8,6 +8,7 @@ import remarkGfm from 'remark-gfm';
 import rehypeRaw from 'rehype-raw';
 import { ArrowLeft } from 'lucide-react';
 import { PROJECT_META } from '../../../lib/projects';
+import MarkdownImage from '../../../components/MarkdownImage';
 
 export async function generateStaticParams() {
   const dir = path.join(process.cwd(), 'content/projects');
@@ -119,9 +120,7 @@ export default async function ProjectDetail({ params }) {
               </a>
             ),
             hr: () => <hr className="border-gray-700 my-6" />,
-            img: ({ src, alt }) => (
-              <img src={src} alt={alt} className="max-w-full h-auto rounded-lg border border-gray-700 my-4" />
-            ),
+            img: ({ src, alt }) => <MarkdownImage src={src} alt={alt} />,
           }}
         >
           {markdown}
