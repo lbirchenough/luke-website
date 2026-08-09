@@ -10,6 +10,21 @@ import { ArrowLeft } from 'lucide-react';
 import { PROJECT_META } from '../../../lib/projects';
 import MarkdownImage from '../../../components/MarkdownImage';
 
+function toText(node) {
+  if (typeof node === 'string' || typeof node === 'number') return String(node);
+  if (Array.isArray(node)) return node.map(toText).join('');
+  if (node?.props?.children) return toText(node.props.children);
+  return '';
+}
+
+function slugify(children) {
+  return toText(children)
+    .toLowerCase()
+    .replace(/[^a-z0-9\s-]/g, '')
+    .trim()
+    .replace(/\s+/g, '-');
+}
+
 export async function generateStaticParams() {
   const dir = path.join(process.cwd(), 'content/projects');
   const files = await fs.readdir(dir);
@@ -69,12 +84,17 @@ export default async function ProjectDetail({ params }) {
               </div>
             ),
             h2: ({ children }) => (
-              <h2 className="text-2xl font-semibold mb-4 text-blue-400 mt-8 pb-2 border-b border-gray-700">
+              <h2
+                id={slugify(children)}
+                className="text-2xl font-semibold mb-4 text-blue-400 mt-8 pb-2 border-b border-gray-700 scroll-mt-6"
+              >
                 {children}
               </h2>
             ),
             h3: ({ children }) => (
-              <h3 className="text-xl font-medium mb-2 text-blue-300 mt-4">{children}</h3>
+              <h3 id={slugify(children)} className="text-xl font-medium mb-2 text-blue-300 mt-4 scroll-mt-6">
+                {children}
+              </h3>
             ),
             p: ({ children }) => (
               <p className="mb-4 text-gray-200 leading-relaxed">{children}</p>
@@ -109,16 +129,19 @@ export default async function ProjectDetail({ params }) {
                 {children}
               </pre>
             ),
-            a: ({ href, children }) => (
-              <a
-                href={href}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-blue-400 hover:text-blue-300 underline decoration-blue-400 hover:decoration-blue-300 transition-colors duration-200"
-              >
-                {children}
-              </a>
-            ),
+            a: ({ href, children }) => {
+              const isAnchor = href?.startsWith('#');
+              return (
+                <a
+                  href={href}
+                  target={isAnchor ? undefined : '_blank'}
+                  rel={isAnchor ? undefined : 'noopener noreferrer'}
+                  className="text-blue-400 hover:text-blue-300 underline decoration-blue-400 hover:decoration-blue-300 transition-colors duration-200"
+                >
+                  {children}
+                </a>
+              );
+            },
             hr: () => <hr className="border-gray-700 my-6" />,
             img: ({ src, alt }) => <MarkdownImage src={src} alt={alt} />,
           }}

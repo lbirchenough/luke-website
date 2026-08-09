@@ -1,5 +1,9 @@
 # Financial Research Agent
 
+<div class="my-6 rounded-lg border border-amber-400/40 bg-amber-400/10 px-4 py-3 text-gray-200">
+  <strong class="text-amber-300">Update:</strong> Due to significant fees, agentic retrieval on the Foundry IQ knowledge base has been set from medium to minimal reasoning. Knowledge sources are now queried directly rather than through a planning agent. <a href="#retrieval-rag">Details in the Retrieval (RAG) section</a>.
+</div>
+
 ## Overview
 
 A financial analysis chat app. Ask it about Amazon or Meta and it answers from their SEC filings, retrieving against a corpus of 10-Ks and 10-Qs, with an MCP tool server covering anything the filings can't: current stock price, the latest earnings release, live SEC company facts. The same question can be put to two separate pipelines. One is hand-rolled with LangChain and deepagents over a Qdrant vector store I built and ingest into myself. The other runs entirely on Azure AI Foundry Agent Service, where the agent, its knowledge base and its conversation history are all hosted. Both sit behind the same React frontend. Because a chat model on the open internet is a spending liability, cost control and abuse control are treated as first-class requirements rather than afterthoughts.
@@ -93,7 +97,7 @@ The corpus is Amazon and Meta SEC filings: 10-Ks for 2023, 2024 and 2025 plus th
 | Charts / images | Vision model writes a description per page image; the description is what gets embedded | Image verbalisation, done by the service |
 | Chunking | Page-level for text, one chunk per table, one per image description | Service-managed |
 | Store | Qdrant Cloud, named dense + sparse vectors | Foundry IQ index |
-| Retrieval | Hybrid dense + BM25, optional metadata filter, `k` clamped to 8 | Agentic: retrieval model plans and issues its own queries |
+| Retrieval | Hybrid dense + BM25, optional metadata filter, `k` clamped to 8 | Set by reasoning level: agentic at medium, direct lookup at minimal |
 | Metadata / filtering | Parsed from filename, keyword payload indexes, model-supplied filters | Handled by the service |
 | Re-ingestion | Idempotent on `(file_hash, page)`; drop new PDFs in and re-run | Drop new blobs in the container; the source re-indexes |
 | Control | Total: every knob is a constant I own | Coarse: extraction mode, retrieval model, reasoning level |
@@ -105,9 +109,10 @@ The corpus is Amazon and Meta SEC filings: 10-Ks for 2023, 2024 and 2025 plus th
 - **Content extraction mode** is the setting that matters most. Plain text extraction flattens a 10-K into prose and loses the financial statements entirely; the multimodal mode is what preserves **table structure**, which is where nearly every number worth retrieving lives.
 - **Image verbalisation** handles the charts and figures, with the service captioning them into text at index time.
 - Strategy is deliberately **mono-modal**: everything, including tables and charts, becomes text before it is indexed. One modality means one retrieval path and no fusion to tune. This is the same strategy the LangChain pipeline arrives at by hand, which makes the two genuinely comparable.
-- **Knowledge Base** wraps the knowledge source and is what gets attached to the agent. It carries its own **retrieval model** and **retrieval reasoning level**, currently `gpt-5.4-nano` at medium.
-- Retrieval is **agentic**, not a single similarity lookup: the retrieval model decomposes the question and issues its own queries against the index. That is where the quality comes from, and also where the cost goes.
-- Known rough edge: medium reasoning routinely returns **40+ documents**, which floods the agent's input context. Lowering the reasoning level is the obvious lever and is untuned so far.
+- **Knowledge Base** wraps the knowledge source and is what gets attached to the agent. It carries its own **retrieval model** and **retrieval reasoning level**, currently `gpt-5.4-nano` at minimal, reduced from medium.
+- At medium and above, retrieval is **agentic** rather than a single similarity lookup: the retrieval model decomposes the question and issues its own queries against the index. That is where the quality comes from, and also where the cost goes.
+- Known rough edge: medium reasoning routinely returns **40+ documents**, which floods the agent's input context. Lowering the reasoning level is the obvious lever.
+- **Update: reasoning level dropped from medium to minimal.** Agentic retrieval was drawing significant fees, and the planning step is itself a source of token consumption on top of the documents it returns. At minimal the knowledge base no longer runs an internal agent to plan and generate queries; the knowledge sources are queried directly. This should cut search costs by removing that second consumer of tokens entirely. What it does to retrieval quality is not yet measured, and the evaluations below were all run at medium, so they describe the previous behaviour rather than the current one.
 
 ### LangChain: hand-rolled pipeline
 
@@ -149,7 +154,7 @@ Implemented in `backend/langchain_deep_agent/rag.py`.
 - Models selected were **GPT-5.6-Terra, GPT-5.6-Luna, GPT-5.4 and GPT-5.4-Nano**, chosen for a good spread of model capability and token pricing.
 - Evaluators are set up which use LLMs to evaluate and grade the agent's response against specific criteria such as groundedness, relevance, and similarity to a ground-truth expected answer.
 - Split into two evaluation datasets: one looking specifically at **retrieval** capability, meaning finding relevant information in the document corpus, and one looking at how comprehensive a **financial analysis** the agent can produce.
-- The knowledge base uses `gpt-5.4-nano` as its retrieval model at medium retrieval reasoning level. There is likely further tuning available by adjusting the reasoning level, as it currently seems to return upwards of 40 documents which flood input context, but it is good enough for now.
+- The knowledge base used `gpt-5.4-nano` as its retrieval model at **medium** retrieval reasoning level for every run below. Medium routinely returned upwards of 40 documents, enough to flood input context, which is what later prompted the drop to minimal described above. The scores here therefore reflect the previous retrieval configuration. Further testing is required to see overall impact of minimal reasoning on retrieval quality and analysis quality.
 
 ### Retrieval Quality
 
