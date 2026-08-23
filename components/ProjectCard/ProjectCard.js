@@ -14,6 +14,8 @@ export default function ProjectCard({
   link,
   linkIsExternal = false,
   linkNote,
+  linkDisabled = false,
+  linkWarning,
   detailSlug,
   techStack,
   isExpanded,
@@ -42,7 +44,14 @@ export default function ProjectCard({
                 {title}
               </h2>
               <p className="mt-1 text-sm text-gray-400">{subtitle}</p>
-              {linkIsExternal ? (
+              {linkDisabled ? (
+                <span
+                  aria-disabled="true"
+                  className="mt-1 inline-block text-sm text-gray-500 line-through cursor-not-allowed"
+                >
+                  View live app ↗
+                </span>
+              ) : linkIsExternal ? (
                 <a
                   href={link}
                   target="_blank"
@@ -60,6 +69,9 @@ export default function ProjectCard({
                 >
                   View live app ↗
                 </Link>
+              )}
+              {linkWarning && (
+                <p className="mt-1 text-xs text-red-400">{linkWarning}</p>
               )}
               {linkNote && (
                 <p className="mt-1 text-xs text-gray-400">{linkNote}</p>

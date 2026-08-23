@@ -58,20 +58,32 @@ export default async function ProjectDetail({ params }) {
         </Link>
 
         {meta?.thumbnail && (
-          <a
-            href={meta.link}
-            target={meta.linkIsExternal ? "_blank" : undefined}
-            rel={meta.linkIsExternal ? "noopener noreferrer" : undefined}
-            className="block mb-8"
-          >
-            <Image
-              src={meta.thumbnail}
-              alt={meta.thumbnailAlt ?? meta.title}
-              width={2500}
-              height={1260}
-              className="w-full h-auto rounded-lg border border-gray-700 hover:border-blue-400 transition-colors"
-            />
-          </a>
+          meta.linkDisabled ? (
+            <div className="block mb-8">
+              <Image
+                src={meta.thumbnail}
+                alt={meta.thumbnailAlt ?? meta.title}
+                width={2500}
+                height={1260}
+                className="w-full h-auto rounded-lg border border-gray-700 opacity-60"
+              />
+            </div>
+          ) : (
+            <a
+              href={meta.link}
+              target={meta.linkIsExternal ? "_blank" : undefined}
+              rel={meta.linkIsExternal ? "noopener noreferrer" : undefined}
+              className="block mb-8"
+            >
+              <Image
+                src={meta.thumbnail}
+                alt={meta.thumbnailAlt ?? meta.title}
+                width={2500}
+                height={1260}
+                className="w-full h-auto rounded-lg border border-gray-700 hover:border-blue-400 transition-colors"
+              />
+            </a>
+          )
         )}
 
         <ReactMarkdown

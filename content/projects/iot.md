@@ -1,5 +1,9 @@
 # IoT Experimentation
 
+<div class="my-6 rounded-lg border border-amber-400/40 bg-amber-400/10 px-4 py-3 text-gray-200">
+  <strong class="text-amber-300">Update:</strong> The Laravel API is temporarily down due to cost saving measures. The Grafana dashboard and AWS pipeline are still operational.
+</div>
+
 ## Overview
 
 An ESP8266 D1 Mini microcontroller reads sensor data on a configurable interval and ships it through a cloud-native AWS pipeline to InfluxDB and Grafana. A PC-based simulator is included so the pipeline can be tested without physical hardware. 
@@ -32,7 +36,7 @@ The physical setup uses an ESP8266 D1 Mini as the microcontroller, running Micro
 
 This project began as a learning exercise with my friend Hiroshi Ransom, exploring core IoT concepts: sending sensor data from a microcontroller to a backend and visualising it in a web page. I was learning Laravel at the time, so it made a natural choice for the backend API. Livewire was a good fit for the frontend, as its built-in polling and component-driven design suited a dashboard layout better than standard Blade templates. We initially used a Raspberry Pi with a wired connection, but later moved toward a wireless "IoT box": an ESP8266 in a custom enclosure to better simulate a real field device.
 
-The ESP8266 POSTs sensor readings directly to a Laravel REST API, which stores them in a database and surfaces them through a [Livewire dashboard](https://livewire-test-8riau887.on-forge.com/sensor-data) with live-updating charts (username: test@test.com, password: hiroluke123).
+The ESP8266 POSTs sensor readings directly to a Laravel REST API, which stores them in a database and surfaces them through a Livewire dashboard with live-updating charts. <span class="text-red-400">This dashboard is temporarily offline &mdash; the Laravel API has been disabled as a cost saving measure.</span>
 
 ![Laravel Livewire sensor dashboard](https://res.cloudinary.com/duevte0ku/image/upload/v1775556033/IoT-LivewireChart_mg2sjk.png)
 

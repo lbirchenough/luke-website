@@ -1,5 +1,9 @@
 # Workopia
 
+<div class="my-6 rounded-lg border border-amber-400/40 bg-amber-400/10 px-4 py-3 text-gray-200">
+  <strong class="text-amber-300">Update:</strong> The server is temporarily disabled due to cost saving measures. The site is not currently available.
+</div>
+
 ## Overview
 
 A full-stack job board application where employers can post job listings and job seekers can search, bookmark, and apply to positions. Features user authentication, job search functionality, bookmark management, and application tracking with role-based authorization. Built following Laravel best practices including database migrations, Artisan seeders for test data generation, and Eloquent ORM for clean model relationships and queries. Built with Vite for asset compilation.
@@ -34,4 +38,4 @@ Write about what you found challenging or interesting here.
 
 ## Links
 
-- [Live App](https://workopia_laravel-msvylpgk.on-forge.com/)
+- Live App <span class="text-red-400">&mdash; temporarily unavailable, server disabled due to cost saving measures</span>
