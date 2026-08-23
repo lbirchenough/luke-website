@@ -25,7 +25,7 @@ An ESP8266 D1 Mini microcontroller reads sensor data on a configurable interval 
 
 ## Hardware
 
-The physical setup uses an ESP8266 D1 Mini as the microcontroller, running MicroPython. Two sensors are wired up: a SHARP 2Y0A21 infrared distance sensor which outputs an analogue voltage that maps to distance, and a simple digital switch. Both are read every 30 seconds and the readings are packaged into an MQTT payload for the cloud pipeline.
+The physical setup uses an ESP8266 D1 Mini as the microcontroller, running MicroPython. Two sensors are wired up: a SHARP 2Y0A21 infrared distance sensor which outputs an analogue voltage that maps to distance, and a simple digital switch. Both are read every 5 minutes and the readings are packaged into an MQTT payload for the cloud pipeline.
 
 <div class="grid grid-cols-2 gap-4 my-4">
   <img src="https://res.cloudinary.com/duevte0ku/image/upload/w_800,q_auto,f_auto/v1775543571/iot-hardware1_fggydc.jpg" alt="IoT hardware setup 1" class="rounded-lg border border-gray-700 w-full h-auto" />
