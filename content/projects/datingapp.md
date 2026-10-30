@@ -28,4 +28,4 @@ Write about what you found challenging or interesting here.
 
 ## Links
 
-- [Live App](https://lb-da-2025.azurewebsites.net/)
+- Live App <span class="text-red-400">&mdash; temporarily disabled</span>

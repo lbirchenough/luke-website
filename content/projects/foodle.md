@@ -27,4 +27,4 @@ Write about what you found challenging or interesting here.
 
 ## Links
 
-- [Live App](https://foodle-app-seven.vercel.app/)
+- Live App <span class="text-red-400">&mdash; temporarily disabled</span>
